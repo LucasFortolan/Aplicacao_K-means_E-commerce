@@ -1,51 +1,82 @@
-📊 Segmentação de Clientes com RFM + K-Means
+# 🛒 Segmentação de Clientes de E-commerce com K-Means
 
-Este projeto realiza a segmentação de clientes de um e-commerce utilizando o método RFM (Recency, Frequency, Monetary) combinado com o algoritmo de clusterização K-Means. O objetivo é identificar grupos de consumidores com comportamentos similares, oferecendo base analítica para ações de marketing direcionadas e decisões estratégicas.
+Este notebook demonstra como segmentar clientes de um e-commerce usando o algoritmo **K-Means**.  
+O dataset contém transações de uma varejista online do Reino Unido, registradas entre **01/12/2010** e **09/12/2011**.
 
-🔎 Principais Etapas
+A empresa analisada é uma varejista que opera exclusivamente online, especializada em presentes diferenciados para diversas ocasiões, atendendo tanto consumidores finais quanto atacadistas.
 
-Limpeza e tratamento dos dados
+---
 
-Remoção de valores faltantes e registros inconsistentes
+## 🚀 Fluxo de Análise
 
-Cálculo do valor total da compra por transação
+### 1. Importação de Bibliotecas  
+Ferramentas para manipulação de dados, clustering e visualização são carregadas.
 
-Construção das métricas RFM
+### 2. Carregamento do Dataset  
+Cada registro representa uma transação, contendo informações como:  
+- **CustomerID**  
+- **InvoiceNo**  
+- **Quantity**  
+- **UnitPrice**  
+- **InvoiceDate**
 
-Recência: dias desde a última compra
+### 3. Exploração Inicial  
+Análise do formato da base, estrutura das colunas e verificação de valores ausentes.
 
-Frequência: número de transações
+### 4. Limpeza de Dados  
+- Remoção de registros sem `CustomerID`  
+- Eliminação de duplicatas  
+- Exclusão de transações com quantidades ou preços negativos
 
-Valor Monetário: total gasto
+### 5. Criação de Métricas Adicionais  
+- Conversão correta da coluna de datas  
+- Cálculo do valor total da compra (`TotalPrice = Quantity × UnitPrice`)
 
-Padronização
+### 6. Construção da Tabela RFM  
+Cálculo das métricas fundamentais para análise de comportamento do cliente:  
+- **Recência (R):** dias desde a última compra  
+- **Frequência (F):** número de compras distintas  
+- **Valor Monetário (M):** total gasto pelo cliente
 
-Aplicação de StandardScaler para evitar distorções na clusterização
+### 7. Padronização dos Dados  
+As métricas RFM são escaladas para manter proporcionalidade e evitar vieses no clustering.
 
-Definição do número de clusters
+### 8. Definição do Número de Clusters  
+Aplicação do **Elbow Method** para identificar a melhor quantidade de grupos.
 
-Utilização do Método do Cotovelo
+### 9. Aplicação do K-Means  
+Clientes são agrupados conforme padrões de recência, frequência e valor monetário.
 
-Validação com Silhouette Score
+### 10. Avaliação dos Clusters  
+Uso do **Silhouette Score** para mensurar coesão e separação entre grupos.
 
-Clusterização com K-Means
+### 11. Visualização dos Clusters  
+Redução dimensional via **PCA** e plotagem dos clusters para facilitar interpretação.
 
-Segmentação dos clientes em 4 grupos
+### 12. Visualização dos Centróides  
+Análise do comportamento médio de cada cluster, destacando diferenças entre grupos.
 
-Cálculo de métricas médias e análises comparativas
+### 13. Indicadores dos Clusters  
+Cálculo de métricas estratégicas:  
+- Média de RFM por cluster  
+- Tamanho de cada grupo  
+- Participação na receita total  
 
-Visualizações
+Identificação dos principais perfis:  
+- **Clientes VIP / Alta fidelidade:** compram com frequência, gastam muito e são recentes  
+- **Engajados médios:** compram periodicamente, mas gastam menos  
+- **Inativos / Recuperáveis:** clientes antigos com baixo volume  
+- **Sazonais / Baixo valor:** compras pontuais e retorno limitado
 
-Gráficos de dispersão com projeção PCA
+---
 
-Indicadores por cluster e participação no faturamento
+## 🎯 Conclusão
 
-🎯 Resultado
+Esse pipeline permite **segmentar clientes com base em comportamento real de compra**, fornecendo insights úteis para:  
+- Estratégias de marketing  
+- Programas de fidelidade  
+- Retenção e recuperação de clientes  
+- Personalização de campanhas
 
-A análise permitiu:
+---
 
-Identificar grupos com perfis distintos de consumo,
-
-Detectar clientes de alto potencial para ações de retenção e monetização,
-
-Aumentar a capacidade de tomada de decisão baseada em dados para marketing e CRM.
