@@ -1,4 +1,4 @@
-# 🛒 Segmentação de Clientes de E-commerce com K-Means
+# 🛒 Segmentação de Clientes em E-commerce com K-Means e Análise RFM (Recency, Frequency, Monetary)
 
 Este notebook demonstra como segmentar clientes de um e-commerce usando o algoritmo **K-Means**.  
 O dataset contém transações de uma varejista online do Reino Unido, registradas entre **01/12/2010** e **09/12/2011**.
